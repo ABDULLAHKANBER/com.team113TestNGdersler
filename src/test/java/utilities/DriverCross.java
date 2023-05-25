@@ -9,30 +9,24 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
-public class Driver {
+public class DriverCross {
     private static WebDriver driver;
-    private Driver(){
-       /* Singleton pattern kullanilarak istenmeyen yontemlerle
-          driver objesine erisilmesini engelledik
+    private DriverCross(){
 
-          Constructor'i private yaparak bu class'dan obje olusturularak
-          class uyelerinin kullanilmasinin onune gectik
-
-        */
     }
 
-
-    public static WebDriver getDriver(){
-
-        String istenenBrowser=ConfigReader.getProperty("browser");
-        // chrome, firefox, safari, edge
+    public static WebDriver getDriver(String browser){
 
 
+        browser = browser==null ? ConfigReader.getProperty("browser") : browser ;
+        //bu satır bizim emniyet sübapımız.
+        // eger parametre olarak null gonderilirse
+        // configuration.properties'deki browser degerini alacak
 
         if (driver==null){       // bu method her calıstırıldığında driver objesini kontrol eder
             //driveri ilk defa olusturyorsam bu 3 adımı yapsın, sonraki kullanımda bunları çalıştırmaması için
             //driver==null demek daha önce çalıtırlmadı,yani new chromedriver atanmadı demektir.
-            switch (istenenBrowser){
+            switch (browser){
                 case "firefox" :
                     WebDriverManager.firefoxdriver().setup();
                     driver=new FirefoxDriver();
@@ -52,8 +46,8 @@ public class Driver {
 
             }
 
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         }
         return driver;
     }

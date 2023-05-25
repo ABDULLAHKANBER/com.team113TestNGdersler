@@ -1,4 +1,4 @@
-package tests.day14_TestNG;
+package tests.day14_TestNGFrameworkOlusturma;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

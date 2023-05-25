@@ -1,7 +1,6 @@
-package tests.day14_TestNG;
+package tests.day14_TestNGFrameworkOlusturma;
 
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class C03_DependsOnMethods {

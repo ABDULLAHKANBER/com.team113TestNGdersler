@@ -1,4 +1,4 @@
-package tests.day14_TestNG;
+package tests.day14_TestNGFrameworkOlusturma;
 
 import org.testng.annotations.Test;
 
@@ -15,7 +15,7 @@ public class C01_Priority {
      */
 
 
-    @Test (priority = 57)
+    @Test (groups = "minireg1")
     public void youtubeTesti(){
         System.out.println("Yputube");
     }
@@ -23,7 +23,7 @@ public class C01_Priority {
     public void wiseTesti(){
         System.out.println("Wise");
     }
-    @Test
+    @Test(groups = {"smoke","minireg1"})
     public void amazonTesti(){ // priority yazilmazsa 0 degeri alir
         System.out.println("Amazon");
     }
